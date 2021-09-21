@@ -95,8 +95,8 @@ export default {
   data(){
     return {
       dataForm: {
-        title:"",
-        description:"",
+        titulo:"",
+        descripcion:"",
         dateStart:"",
         dateFinish:"",
         curso: {
