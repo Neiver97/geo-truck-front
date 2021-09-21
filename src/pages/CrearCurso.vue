@@ -112,21 +112,18 @@ export default {
   },
   methods: {
     onSubmit(){
-      axios.status(200).post('/' , this.dataCurso)
-      .catch(error =>{
-        this.errorMessage = error.message;
-        console.error("There was an error!",error);
-      })
+      axios.post('http://localhost:8089/curso/', this.dataCurso).then(res => {
+        console.log(res);
+        cleData();
+      }).catch(err => {
+        console.log(err.response);
+      }); 
     },
-    // async getData(){
-    //   await axios.get("https://rickandmortyapi.com/api/character")
-    //   .then(response => this.prueba = response.data.results)
-    //   .catch(error => {
-    //     this.errorMessage = error.message;
-    //     console.error("There was an error!", error);
-    //   });
-    //   console.log(this.prueba);
-    // }
+    cleData(){
+      this.dataCurso.name="",
+      this.dataCurso.creditNumber="",
+      this.dataCurso.totalHour=""
+    }
   }
 };
 </script>

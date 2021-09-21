@@ -80,11 +80,17 @@ export default {
   },
   methods: {
     onSubmit(){
-      axios.status(200).post('/' , this.dataSemestre)
-      .catch(error =>{
-        this.errorMessage = error.message;
-        console.error("There was an error!",error);
-      })    
+      axios.post('http://localhost:8089/semestre/', this.dataSemestre).then(res => {
+        console.log(res);
+        cleData();
+      }).catch(err => {
+        console.log(err.response);
+      });   
+    },
+    cleData(){
+      this.dataSemestre.dateStart="",
+      this.dataSemestre.dateFinish="",
+      this.dataSemestre.seleted=""
     }
   }
 };
