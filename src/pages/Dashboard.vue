@@ -108,24 +108,29 @@ export default {
   methods: {
     //Post information
     onSubmit(){
-      axios.post('localhost:8089/actividades/', this.dataForm, {
+      var optionAxios = {
         headers: {
-          "Access-Control-Allow-Origin": "*"        
+          "Access-Control-Allow-Origin": "*"
         }
-      }).then(res => {
-        console.log(res);
-      }).catch(err => {
-        console.log(err.response);
-      });
+      }
+      // axios.post('localhost:8089/actividades/', this.dataForm, {
+      //   headers: {
+      //     "Access-Control-Allow-Origin": "*"        
+      //   }
+      // }).then(res => {
+      //   console.log(res);
+      // }).catch(err => {
+      //   console.log(err.response);
+      // });
 
       // headers: {
       //   "Access-Control-Allow-Origin": "*"
       // }
-      // await axios.post('localhost:8089/actividades/' , this.dataForm)
-      // .catch(error =>{
-      //   this.errorMessage = error.message;
-      //   console.error("There was an error!",error);
-      // })
+      axios.post('http://localhost:8089/actividades/', this.dataForm, optionAxios)
+      .catch(error =>{
+        this.errorMessage = error.message;
+        console.error("There was an error!",error);
+      });
     }
 
   }
