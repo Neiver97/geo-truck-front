@@ -92,6 +92,7 @@
 export default {
   data(){
     return {
+      
       idActivity: "",
       title:"",
       description:"",
