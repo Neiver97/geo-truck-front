@@ -30,7 +30,7 @@
             >
               <div class="form-group">
                 <label>Name</label>
-                  <input class="form-control" placeholder="Name" v-model="dataCurso.name" :class="(errors.length > 0 ? 'is-invalid':'')" />
+                  <input class="form-control" placeholder="Name" v-model="dataCurso.nombre" :class="(errors.length > 0 ? 'is-invalid':'')" />
                   <div class="invalid-feedback">
                     <span>{{ errors[0] }}</span>
                   </div>              
@@ -48,7 +48,7 @@
             >
               <div class="form-group">
                 <label>Credit Number</label>
-                  <input class="form-control" placeholder="Credit Number" v-model="dataCurso.creditNumber" :class="(errors.length > 0 ? 'is-invalid':'')" />
+                  <input class="form-control" placeholder="Credit Number" v-model="dataCurso.numeroCredito" :class="(errors.length > 0 ? 'is-invalid':'')" />
                   <div class="invalid-feedback">
                     <span>{{ errors[0] }}</span>
                   </div>              
@@ -63,7 +63,7 @@
             >
               <div class="form-group">
                 <label>Total Hours</label>
-                  <input class="form-control" placeholder="Total Hours" v-model="dataCurso.totalHour" :class="(errors.length > 0 ? 'is-invalid':'')" />
+                  <input class="form-control" placeholder="Total Hours" v-model="dataCurso.totalHoras" :class="(errors.length > 0 ? 'is-invalid':'')" />
                   <div class="invalid-feedback">
                     <span>{{ errors[0] }}</span>
                   </div>              
@@ -101,9 +101,9 @@ export default {
   data(){
     return {
       dataCurso: {
-        name:"",
-        creditNumber: "",
-        totalHour:"",
+        nombre:"",
+        numeroCredito: "",
+        totalHoras:"",
       },
       idGroup:"",
       code:"",
@@ -120,9 +120,9 @@ export default {
       }); 
     },
     cleanData(){
-      this.dataCurso.name="",
-      this.dataCurso.creditNumber="",
-      this.dataCurso.totalHour=""
+      this.dataCurso.nombre="",
+      this.dataCurso.numeroCredito="",
+      this.dataCurso.totalHoras=""
     }
   }
 };

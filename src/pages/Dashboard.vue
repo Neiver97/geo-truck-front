@@ -126,10 +126,10 @@ export default {
       });
     },
     cleanData(){
-      this.dataForm.title="",
-      this.dataForm.description="",
-      this.dataForm.dateStart="",
-      this.dataForm.dateFinish=""
+      this.dataForm.titulo="",
+      this.dataForm.descripcion="",
+      this.dataForm.fechaInicio="",
+      this.dataForm.fechaFin=""
     }
   }
 }

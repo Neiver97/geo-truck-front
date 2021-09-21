@@ -13,7 +13,7 @@
                 <label for="example-datepicker">Date Start</label>
                 <b-form-datepicker 
                 id="example-datepicker"
-                v-model="dataSemestre.dateStart" 
+                v-model="dataSemestre.fechaInicio" 
                 class="mb-2" :class="errors.length 
                 > 0 ? 'is-invalid' : ''"
                 >
@@ -34,7 +34,7 @@
                 <label>Date Finish</label>
                 <b-form-datepicker 
                 id="example-datepicker" 
-                v-model="dataSemestre.dateFinish" 
+                v-model="dataSemestre.fechaFin" 
                 class="mb-2" :class="errors.length 
                 > 0 ? 'is-invalid' : ''"
                 >
@@ -64,8 +64,8 @@ export default {
   data() {
     return {
       dataSemestre: {
-        dateStart: "",
-        dateFinish: "",
+        fechaInicio: "",
+        fechaFin: "",
         seleted:0
       },
       cursos: [
@@ -88,8 +88,8 @@ export default {
       });   
     },
     cleanData(){
-      this.dataSemestre.dateStart="",
-      this.dataSemestre.dateFinish="",
+      this.dataSemestre.fechaInicio="",
+      this.dataSemestre.fechaFin="",
       this.dataSemestre.seleted=""
     }
   }
