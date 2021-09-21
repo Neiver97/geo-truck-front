@@ -14,7 +14,7 @@
                   <input class="form-control" placeholder="Title" v-model="dataForm.title" :class="(errors.length > 0 ? 'is-invalid':'')" />
                   <div class="invalid-feedback">
                     <span>{{ errors[0] }}</span>
-                  </div>              
+                  </div>
               </div>
             </ValidationProvider>
           </div>
@@ -36,7 +36,7 @@
                 ></b-form-textarea>
               <div class="invalid-feedback">
                <span>{{ errors[0] }}</span>
-              </div> 
+              </div>
             </div>
             </ValidationProvider>
           </div>
@@ -48,10 +48,10 @@
             >
               <div class="form-group">
                 <label>Date Start</label>
-                <b-form-datepicker 
-                id="example-datepicker" 
-                v-model="dataForm.dateStart" 
-                class="mb-2" :class="errors.length 
+                <b-form-datepicker
+                id="example-datepicker"
+                v-model="dataForm.dateStart"
+                class="mb-2" :class="errors.length
                 > 0 ? 'is-invalid' : ''"
                 >
                 </b-form-datepicker>
@@ -69,10 +69,10 @@
             >
               <div class="form-group">
                 <label>Date Finish</label>
-                <b-form-datepicker 
-                id="example-datepicker" 
-                v-model="dataForm.dateFinish" 
-                class="mb-2" :class="errors.length 
+                <b-form-datepicker
+                id="example-datepicker"
+                v-model="dataForm.dateFinish"
+                class="mb-2" :class="errors.length
                 > 0 ? 'is-invalid' : ''"
                 >
                 </b-form-datepicker>
@@ -99,7 +99,17 @@ export default {
         description:"",
         dateStart:"",
         dateFinish:"",
-        curso: "200"
+        curso: {
+          id: 1,
+          codigo: "12",
+          nombre: "prueba",
+          numeroCreditos: 2,
+          totalHoras: 3,
+          grupo: {
+            id: 1,
+            nombres: "prueba"
+          }
+        }
       },
       idActivity: "",
       idSubject: ""
@@ -108,11 +118,7 @@ export default {
   methods: {
     //Post information
     onSubmit(){
-      axios.post('localhost:8089/actividades/', this.dataForm, {
-        headers: {
-          "Access-Control-Allow-Origin": "*"        
-        }
-      }).then(res => {
+      axios.post('http://localhost:8089/actividades/', this.dataForm).then(res => {
         console.log(res);
       }).catch(err => {
         console.log(err.response);
