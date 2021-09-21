@@ -98,7 +98,8 @@ export default {
         title:"",
         description:"",
         dateStart:"",
-        dateFinish:""
+        dateFinish:"",
+        curso: "200"
       },
       idActivity: "",
       idSubject: ""
@@ -107,11 +108,24 @@ export default {
   methods: {
     //Post information
     onSubmit(){
-      axios.status(200).post('/' , this.dataForm)
-      .catch(error =>{
-        this.errorMessage = error.message;
-        console.error("There was an error!",error);
-      })
+      axios.post('localhost:8089/actividades/', this.dataForm, {
+        headers: {
+          "Access-Control-Allow-Origin": "*"        
+        }
+      }).then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err.response);
+      });
+
+      // headers: {
+      //   "Access-Control-Allow-Origin": "*"
+      // }
+      // await axios.post('localhost:8089/actividades/' , this.dataForm)
+      // .catch(error =>{
+      //   this.errorMessage = error.message;
+      //   console.error("There was an error!",error);
+      // })
     }
 
   }
