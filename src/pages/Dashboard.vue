@@ -11,7 +11,7 @@
             >
               <div class="form-group">
                 <label>Title</label>
-                  <input class="form-control" placeholder="Title" v-model="dataForm.title" :class="(errors.length > 0 ? 'is-invalid':'')" />
+                  <input class="form-control" placeholder="Title" v-model="dataForm.titulo" :class="(errors.length > 0 ? 'is-invalid':'')" />
                   <div class="invalid-feedback">
                     <span>{{ errors[0] }}</span>
                   </div>
@@ -28,7 +28,7 @@
               <label>Description</label>
                 <b-form-textarea
                   id="textarea"
-                  v-model="dataForm.description"
+                  v-model="dataForm.descripcion"
                   placeholder="Enter something..."
                   rows="3"
                   max-rows="6"
@@ -50,7 +50,7 @@
                 <label>Date Start</label>
                 <b-form-datepicker
                 id="example-datepicker"
-                v-model="dataForm.dateStart"
+                v-model="dataForm.fechaInicio"
                 class="mb-2" :class="errors.length
                 > 0 ? 'is-invalid' : ''"
                 >
@@ -71,7 +71,7 @@
                 <label>Date Finish</label>
                 <b-form-datepicker
                 id="example-datepicker"
-                v-model="dataForm.dateFinish"
+                v-model="dataForm.fechaFin"
                 class="mb-2" :class="errors.length
                 > 0 ? 'is-invalid' : ''"
                 >
@@ -97,8 +97,8 @@ export default {
       dataForm: {
         titulo:"",
         descripcion:"",
-        dateStart:"",
-        dateFinish:"",
+        fechaInicio:"",
+        fechaFin:"",
         curso: {
           id: 1,
           codigo: "12",
