@@ -114,12 +114,12 @@ export default {
     onSubmit(){
       axios.post('http://localhost:8089/curso/', this.dataCurso).then(res => {
         console.log(res);
-        cleData();
+        cleanData();
       }).catch(err => {
         console.log(err.response);
       }); 
     },
-    cleData(){
+    cleanData(){
       this.dataCurso.name="",
       this.dataCurso.creditNumber="",
       this.dataCurso.totalHour=""

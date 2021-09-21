@@ -82,12 +82,12 @@ export default {
     onSubmit(){
       axios.post('http://localhost:8089/semestre/', this.dataSemestre).then(res => {
         console.log(res);
-        cleData();
+        cleanData();
       }).catch(err => {
         console.log(err.response);
       });   
     },
-    cleData(){
+    cleanData(){
       this.dataSemestre.dateStart="",
       this.dataSemestre.dateFinish="",
       this.dataSemestre.seleted=""

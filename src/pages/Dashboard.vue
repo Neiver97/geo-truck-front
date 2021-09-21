@@ -120,12 +120,12 @@ export default {
     onSubmit(){
       axios.post('http://localhost:8089/actividades/', this.dataForm).then(res => {
         console.log(res);
-        cleData();
+        cleanData();
       }).catch(err => {
         console.log(err.response);
       });
     },
-    cleData(){
+    cleanData(){
       this.dataForm.title="",
       this.dataForm.description="",
       this.dataForm.dateStart="",
