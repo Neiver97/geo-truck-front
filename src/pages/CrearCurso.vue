@@ -30,7 +30,7 @@
             >
               <div class="form-group">
                 <label>Name</label>
-                  <input class="form-control" placeholder="Name" v-model="name" :class="(errors.length > 0 ? 'is-invalid':'')" />
+                  <input class="form-control" placeholder="Name" v-model="dataCurso.name" :class="(errors.length > 0 ? 'is-invalid':'')" />
                   <div class="invalid-feedback">
                     <span>{{ errors[0] }}</span>
                   </div>              
@@ -48,7 +48,7 @@
             >
               <div class="form-group">
                 <label>Credit Number</label>
-                  <input class="form-control" placeholder="Credit Number" v-model="creditNumber" :class="(errors.length > 0 ? 'is-invalid':'')" />
+                  <input class="form-control" placeholder="Credit Number" v-model="dataCurso.creditNumber" :class="(errors.length > 0 ? 'is-invalid':'')" />
                   <div class="invalid-feedback">
                     <span>{{ errors[0] }}</span>
                   </div>              
@@ -63,7 +63,7 @@
             >
               <div class="form-group">
                 <label>Total Hours</label>
-                  <input class="form-control" placeholder="Total Hours" v-model="totalHour" :class="(errors.length > 0 ? 'is-invalid':'')" />
+                  <input class="form-control" placeholder="Total Hours" v-model="dataCurso.totalHour" :class="(errors.length > 0 ? 'is-invalid':'')" />
                   <div class="invalid-feedback">
                     <span>{{ errors[0] }}</span>
                   </div>              
@@ -95,21 +95,38 @@
   </card>
 </template>
 <script>
+import axios from "axios";
+
 export default {
-  components: {  },
   data(){
-    return{
-    code:"",
-    name:"",
-    creditNumber: "",
-    totalHour:"",
-    idGroup:""
+    return {
+      dataCurso: {
+        name:"",
+        creditNumber: "",
+        totalHour:"",
+      },
+      idGroup:"",
+      code:"",
+      prueba: {}
     }
   },
   methods: {
     onSubmit(){
-      alert('Click!');
-    }
+      axios.status(200).post('/' , this.dataCurso)
+      .catch(error =>{
+        this.errorMessage = error.message;
+        console.error("There was an error!",error);
+      })
+    },
+    // async getData(){
+    //   await axios.get("https://rickandmortyapi.com/api/character")
+    //   .then(response => this.prueba = response.data.results)
+    //   .catch(error => {
+    //     this.errorMessage = error.message;
+    //     console.error("There was an error!", error);
+    //   });
+    //   console.log(this.prueba);
+    // }
   }
 };
 </script>

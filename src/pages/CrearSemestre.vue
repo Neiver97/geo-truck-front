@@ -10,13 +10,14 @@
               v-slot="{ errors }"
             >
               <div class="form-group">
-                <label>Date Start</label>
-                <input
-                  placeholder="DD/MM/YYYY"
-                  class="form-control"
-                  v-model="dateStart"
-                  :class="errors.length > 0 ? 'is-invalid' : ''"
-                />
+                <label for="example-datepicker">Date Start</label>
+                <b-form-datepicker 
+                id="example-datepicker"
+                v-model="dataSemestre.dateStart" 
+                class="mb-2" :class="errors.length 
+                > 0 ? 'is-invalid' : ''"
+                >
+                </b-form-datepicker>
                 <div class="invalid-feedback">
                   <span>{{ errors[0] }}</span>
                 </div>
@@ -31,12 +32,13 @@
             >
               <div class="form-group">
                 <label>Date Finish</label>
-                <input
-                  placeholder="DD/MM/YYYY"
-                  class="form-control"
-                  v-model="dateFinish"
-                  :class="errors.length > 0 ? 'is-invalid' : ''"
-                />
+                <b-form-datepicker 
+                id="example-datepicker" 
+                v-model="dataSemestre.dateFinish" 
+                class="mb-2" :class="errors.length 
+                > 0 ? 'is-invalid' : ''"
+                >
+                </b-form-datepicker>
                 <div class="invalid-feedback">
                   <span>{{ errors[0] }}</span>
                 </div>
@@ -46,37 +48,43 @@
         <div class="col-md">
           <label for="">Cursos</label>
           <div>
-            <b-form-select v-model="seleted" :options="cursos"></b-form-select>
+            <b-form-select v-model="dataSemestre.seleted" :options="cursos"></b-form-select>
           </div>
         </div>
         </div>
         <input class="btn btn-primary mt-2" type="submit" text="Send" />
       </form>
-
-      <div class="col-6">
-      </div>
     </ValidationObserver>
   </card>
 </template>
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
-      idSemestre: "",
-      dateStart: "",
-      dateFinish: "",
-      seleted:0,
+      dataSemestre: {
+        dateStart: "",
+        dateFinish: "",
+        seleted:0
+      },
       cursos: [
         { value: 0, text: "Proyecto Integrador" },
         { value: 1, text: "Física de Campos" },
         { value: 2, text: "Física de Mecánica" },
-        { value: 3, text: "Fundamento" }
-      ]
+        { value: 3, text: "Fundamentos de sistemas" }
+      ],
+      idSemestre: "",
+
     };
   },
   methods: {
     onSubmit(){
-      alert('Click!');
+      axios.status(200).post('/' , this.dataSemestre)
+      .catch(error =>{
+        this.errorMessage = error.message;
+        console.error("There was an error!",error);
+      })    
     }
   }
 };

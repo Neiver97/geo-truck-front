@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <card>
     <ValidationObserver  v-slot="{ handleSubmit }">
       <form @submit.prevent="handleSubmit(onSubmit)">
         <div class="col-12">
@@ -11,7 +11,7 @@
             >
               <div class="form-group">
                 <label>Title</label>
-                  <input class="form-control" placeholder="Title" v-model="title" :class="(errors.length > 0 ? 'is-invalid':'')" />
+                  <input class="form-control" placeholder="Title" v-model="dataForm.title" :class="(errors.length > 0 ? 'is-invalid':'')" />
                   <div class="invalid-feedback">
                     <span>{{ errors[0] }}</span>
                   </div>              
@@ -28,7 +28,7 @@
               <label>Description</label>
                 <b-form-textarea
                   id="textarea"
-                  v-model="description"
+                  v-model="dataForm.description"
                   placeholder="Enter something..."
                   rows="3"
                   max-rows="6"
@@ -50,7 +50,7 @@
                 <label>Date Start</label>
                 <b-form-datepicker 
                 id="example-datepicker" 
-                v-model="dateStart" 
+                v-model="dataForm.dateStart" 
                 class="mb-2" :class="errors.length 
                 > 0 ? 'is-invalid' : ''"
                 >
@@ -71,7 +71,7 @@
                 <label>Date Finish</label>
                 <b-form-datepicker 
                 id="example-datepicker" 
-                v-model="dateFinish" 
+                v-model="dataForm.dateFinish" 
                 class="mb-2" :class="errors.length 
                 > 0 ? 'is-invalid' : ''"
                 >
@@ -86,24 +86,32 @@
         <input class="btn btn-primary mt-2" type="submit" text="Send" />
       </form>
     </ValidationObserver>
-  </div>
+  </card>
 </template>
 <script>
+import axios from "axios";
+
 export default {
   data(){
     return {
-      
+      dataForm: {
+        title:"",
+        description:"",
+        dateStart:"",
+        dateFinish:""
+      },
       idActivity: "",
-      title:"",
-      description:"",
-      dateStart:"",
-      dateFinish:"",
       idSubject: ""
     }
   },
   methods: {
+    //Post information
     onSubmit(){
-      alert('Click!');
+      axios.status(200).post('/' , this.dataForm)
+      .catch(error =>{
+        this.errorMessage = error.message;
+        console.error("There was an error!",error);
+      })
     }
 
   }
