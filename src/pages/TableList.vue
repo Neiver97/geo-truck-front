@@ -13,54 +13,23 @@
 </template>
 <script>
 import { PaperTable } from "@/components";
-const tableColumns = ["Id", "Name", "Salary", "Country", "City"];
-const tableData = [
-  {
-    id: 1,
-    name: "Dakota Rice",
-    salary: "$36.738",
-    country: "Niger",
-    city: "Oud-Turnhout"
-  },
-  {
-    id: 2,
-    name: "Minerva Hooper",
-    salary: "$23,789",
-    country: "Curaçao",
-    city: "Sinaai-Waas"
-  },
-  {
-    id: 3,
-    name: "Sage Rodriguez",
-    salary: "$56,142",
-    country: "Netherlands",
-    city: "Baileux"
-  },
-  {
-    id: 4,
-    name: "Philip Chaney",
-    salary: "$38,735",
-    country: "Korea, South",
-    city: "Overland Park"
-  },
-  {
-    id: 5,
-    name: "Doris Greene",
-    salary: "$63,542",
-    country: "Malawi",
-    city: "Feldkirchen in Kärnten"
-  }
-];
+import axios from 'axios';
+const tableColumns = ["Id", "Title", "Description", "Start Date", "Finish Date"];
+const tableData =[];
 
 export default {
   components: {
     PaperTable
   },
+  mounted(){
+    this.getElements();
+  },
   data() {
     return {
+      tableData:[],
       table1: {
-        title: "Stripped Table",
-        subTitle: "Here is a subtitle for this table",
+        title: "Activity table",
+        subTitle: "Information about the activitys",
         columns: [...tableColumns],
         data: [...tableData]
       },
@@ -71,6 +40,18 @@ export default {
         data: [...tableData]
       }
     };
+  },
+  methods: {
+    async getElements(){
+      await axios.get('http://localhost:8089/actividades/')
+      .then(response => {
+        this.tableData=response.data;
+        console.log(tableData);
+      })
+      .catch(e => {
+          console.log(e);
+      })
+    }
   }
 };
 </script>

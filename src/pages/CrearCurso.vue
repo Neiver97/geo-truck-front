@@ -14,7 +14,7 @@
                 <label>Code</label>
                   <input class="form-control" 
                   placeholder="Code"
-                  v-model="code"
+                  v-model="dataCurso.code"
                   :class="(errors.length > 0 ? 'is-invalid':'')" />
                   <div class="invalid-feedback">
                     <span>{{ errors[0] }}</span>
@@ -48,7 +48,7 @@
             >
               <div class="form-group">
                 <label>Credit Number</label>
-                  <input class="form-control" placeholder="Credit Number" v-model="dataCurso.numeroCredito" :class="(errors.length > 0 ? 'is-invalid':'')" />
+                  <input class="form-control" type="number" placeholder="Credit Number" v-model="dataCurso.numeroCredito" :class="(errors.length > 0 ? 'is-invalid':'')" />
                   <div class="invalid-feedback">
                     <span>{{ errors[0] }}</span>
                   </div>              
@@ -62,25 +62,8 @@
               v-slot="{ errors }"
             >
               <div class="form-group">
-                <label>Total Hours</label>
+                <label>Total Hours / weeks</label>
                   <input class="form-control" placeholder="Total Hours" v-model="dataCurso.totalHoras" :class="(errors.length > 0 ? 'is-invalid':'')" />
-                  <div class="invalid-feedback">
-                    <span>{{ errors[0] }}</span>
-                  </div>              
-              </div>
-            </ValidationProvider>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <ValidationProvider
-              name="Group Id"
-              rules="required"
-              v-slot="{ errors }"
-            >
-              <div class="form-group">
-                <label>Group Id</label>
-                  <input class="form-control" placeholder="Group Id" v-model="idGroup" :class="(errors.length > 0 ? 'is-invalid':'')" />
                   <div class="invalid-feedback">
                     <span>{{ errors[0] }}</span>
                   </div>              
@@ -96,25 +79,35 @@
 </template>
 <script>
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 export default {
   data(){
     return {
       dataCurso: {
+        codigo:"",
         nombre:"",
         numeroCredito: "",
         totalHoras:"",
-      },
-      idGroup:"",
-      code:"",
-      prueba: {}
+        grupo: {
+          id:1,
+          nombres:"Grupo 1"
+        },
+        estado: true
+      }
     }
   },
   methods: {
-    onSubmit(){
-      axios.post('http://localhost:8089/curso/', this.dataCurso).then(res => {
+    async onSubmit(){
+      await axios.post('http://localhost:8089/curso/', this.dataCurso).then(async(res) => {
         console.log(res);
-        cleanData();
+          await Swal.fire({
+            icon: "success",
+            title: "Crear curso",
+            text: "Curso creado con éxito",
+            timer: 1500,
+          });
+        this.cleanData();
       }).catch(err => {
         console.log(err.response);
       }); 

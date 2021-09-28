@@ -9,7 +9,7 @@
         <!--<sidebar-link to="/icons" name="Icons" icon="ti-pencil-alt2"/>
         <sidebar-link to="/maps" name="Map" icon="ti-map"/> -->
         <sidebar-link to="/crear-semestre" name="Create Semestre" icon="ti-pencil-alt"/>
-        <sidebar-link to="/login" name="Login" icon="ti-write"/>
+        <!-- <sidebar-link to="/login" name="Login" icon="ti-write"/> -->
       </template>
       <mobile-menu>
         <li class="nav-item">

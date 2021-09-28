@@ -90,7 +90,7 @@
 </template>
 <script>
 import axios from "axios";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 export default {
   data(){
@@ -118,10 +118,16 @@ export default {
   },
   methods: {
     //Post information
-    onSubmit(){
-      axios.post('http://localhost:8089/actividades/', this.dataForm).then(res => {
+     async onSubmit(){
+      await axios.post('http://localhost:8089/actividades/', this.dataForm).then(async (res) => {
         console.log(res);
-        cleanData();
+          await Swal.fire({
+            icon: "success",
+            title: "Dato insertado",
+            text: "Dato insertado con éxito",
+            timer: 1000,
+          });
+          this.cleanData();
       }).catch(err => {
         console.log(err.response);
       });

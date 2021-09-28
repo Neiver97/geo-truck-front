@@ -59,6 +59,7 @@
 </template>
 <script>
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 export default {
   data() {
@@ -66,8 +67,8 @@ export default {
       dataSemestre: {
         fechaInicio: "",
         fechaFin: "",
-        seleted:0
       },
+      seleted:0,
       cursos: [
         { value: 0, text: "Proyecto Integrador" },
         { value: 1, text: "Física de Campos" },
@@ -79,10 +80,16 @@ export default {
     };
   },
   methods: {
-    onSubmit(){
-      axios.post('http://localhost:8089/semestre/', this.dataSemestre).then(res => {
+    async onSubmit(){
+      await axios.post('http://localhost:8089/semestre/', this.dataSemestre).then(async(res) => {
         console.log(res);
-        cleanData();
+          await Swal.fire({
+            icon: "success",
+            title: "Semestre creado",
+            text: "Semestre creado con éxito",
+            timer: 1500,
+          });
+        this.cleanData();
       }).catch(err => {
         console.log(err.response);
       });   
@@ -90,7 +97,7 @@ export default {
     cleanData(){
       this.dataSemestre.fechaInicio="",
       this.dataSemestre.fechaFin="",
-      this.dataSemestre.seleted=""
+      this.seleted=""
     }
   }
 };

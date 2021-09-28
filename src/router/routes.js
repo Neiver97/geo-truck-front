@@ -15,6 +15,11 @@ import Login from '../pages/Login'
 
 const routes = [
   {
+    path:"/login",
+    name:"login",
+    component: Login
+  },
+  {
     path:"/user-register-form",
     component: UserRegisterForm,
     name: "user-register",
@@ -58,11 +63,6 @@ const routes = [
         path: "table-list",
         name: "table-list",
         component: TableList
-      },
-      {
-        path:"login",
-        name:"login",
-        component: Login
       }
     ]
   },

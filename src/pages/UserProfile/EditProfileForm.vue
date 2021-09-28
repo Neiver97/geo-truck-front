@@ -142,6 +142,10 @@
   </card>
 </template>
 <script>
+import Swal from 'sweetalert2';
+import axios from "axios";
+
+
 export default {
   data() {
     return {
@@ -159,8 +163,30 @@ export default {
     }
   },
   methods: {
-    updateProfile() {
-      alert("Your data: " + JSON.stringify(this.user));
+    async onSubmit(){
+      await axios.post('http://localhost:8089/semestre/', this.user).then(async(res) => {
+        console.log(res);
+          await Swal.fire({
+            icon: "success",
+            title: "Dato insertado",
+            text: "Dato insertado con éxito",
+            timer: 1500,
+          });
+        this.cleanData();
+      }).catch(err => {
+        console.log(err.response);
+      });   
+    },
+    cleanData(){
+        this.user.identification= "",
+        this.user.email= "",
+        this.user.firstName= "",
+        this.user.lastName= "",
+        this.user.gender= "",
+        this.user.phone= "",
+        this.user.password= "",
+        this.user.speciality= "",
+        this.user.asignedArea= ""
     }
   }
 };
