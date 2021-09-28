@@ -6,6 +6,7 @@
             <paper-table type="hover" :data="table1.data" :columns="table1.columns">
 
             </paper-table>
+            {{table1.data}}
           </div>
         </card>
       </div>
@@ -15,7 +16,7 @@
 import { PaperTable } from "@/components";
 import axios from 'axios';
 const tableColumns = ["Id", "Title", "Description", "Start Date", "Finish Date"];
-const tableData =[];
+const tableData=[];
 
 export default {
   components: {
@@ -26,12 +27,13 @@ export default {
   },
   data() {
     return {
-      tableData:[],
       table1: {
         title: "Activity table",
         subTitle: "Information about the activitys",
         columns: [...tableColumns],
-        data: [...tableData]
+        data: [{
+          "":tableData.id
+        }]
       },
       table2: {
         title: "Table on Plain Background",
@@ -46,7 +48,7 @@ export default {
       await axios.get('http://localhost:8089/actividades/')
       .then(response => {
         this.tableData=response.data;
-        console.log(tableData);
+        console.log(this.tableData);
       })
       .catch(e => {
           console.log(e);
