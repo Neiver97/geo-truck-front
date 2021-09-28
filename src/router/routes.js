@@ -11,6 +11,7 @@ import Maps from "@/pages/Maps.vue";
 import CrearCurso from "@/pages/CrearCurso.vue";
 import TableList from "@/pages/TableList.vue";
 import UserRegisterForm from '../pages/UserProfile/UserRegisterForm'
+import Login from '../pages/Login'
 
 const routes = [
   {
@@ -57,6 +58,11 @@ const routes = [
         path: "table-list",
         name: "table-list",
         component: TableList
+      },
+      {
+        path:"login",
+        name:"login",
+        component: Login
       }
     ]
   },
