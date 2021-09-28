@@ -115,7 +115,8 @@ export default {
     cleanData(){
       this.dataCurso.nombre="",
       this.dataCurso.numeroCredito="",
-      this.dataCurso.totalHoras=""
+      this.dataCurso.totalHoras="",
+      this.dataCurso.codigo=""
     }
   }
 };
