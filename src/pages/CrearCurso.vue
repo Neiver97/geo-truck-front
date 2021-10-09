@@ -99,8 +99,11 @@ export default {
     }
   },
   methods: {
+    
     async onSubmit(){
-      await axios.post('http://localhost:8089/curso/', this.dataCurso).then(async(res) => {
+      const URL = "http://localhost:8089/curso/";
+
+      await axios.post(URL, this.dataCurso).then(async(res) => {
         console.log(res);
           await Swal.fire({
             icon: "success",
@@ -112,12 +115,6 @@ export default {
       }).catch(err => {
         console.log(err.response);
       }); 
-    },
-    cleanData(){
-      this.dataCurso.nombre="",
-      this.dataCurso.numeroCredito="",
-      this.dataCurso.totalHoras="",
-      this.dataCurso.codigo=""
     }
   }
 };

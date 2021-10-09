@@ -121,8 +121,8 @@ export default {
       user: {
         identification: "",
         email: "",
-        firstName: "",
-        lastName: "",
+        nombre: "",
+        apellido: "",
         gender: "",
         phone: "",
         rol:""

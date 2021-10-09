@@ -99,7 +99,7 @@
         </div>
 
         <div class="row">
-          <div class="col-md-5">
+          <!-- <div class="col-md-5">
             <ValidationProvider
               name="Ultima Ubicación"
               rules="required"
@@ -113,8 +113,9 @@
                   </div>
               </div>
             </ValidationProvider>
-          </div>
-          <div class="col-md-3">
+          </div> -->
+
+          <!-- <div class="col-md-3">
             <ValidationProvider
               name="Ruta"
               rules="required"
@@ -128,8 +129,8 @@
                   </div>              
               </div>
             </ValidationProvider>
-          </div>
-          <div class="col-md-4">
+          </div> -->
+          <!-- <div class="col-md-4">
             <ValidationProvider
               name="Carga"
               rules="required"
@@ -143,7 +144,7 @@
                   </div>              
               </div>
             </ValidationProvider>
-          </div>
+          </div> -->
         </div>
 
         <input class="btn btn-primary mt-2" type="submit" text="Send" />
@@ -162,19 +163,19 @@ export default {
         placa:"",
         tipo:"",
         marca:"",
-        modelo:"",
-        capacidad: "",
+        modelo:0,
+        capacidad: 0,
         color: "",
-        ultimaUbicacion: "",
-        ruta: "",
-        carga: "",
+        //ruta: "",
+        //carga: "",
       }
     }
   },
   methods: {
     //Post information
      async onSubmit(){
-      await axios.post('http://localhost:8089/actividades/', this.dataForm).then(async (res) => {
+       const URL= "http://localhost:8080/v1/vehiculos";
+      await axios.post(URL, this.dataForm).then(async (res) => {
         console.log(res);
           await Swal.fire({
             icon: "success",
