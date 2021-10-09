@@ -71,6 +71,7 @@
             </ValidationProvider>
           </div>
         </div>
+        
         <input class="btn btn-primary mt-2" type="submit" text="Send" />
       </form>
     </ValidationObserver>

@@ -44,7 +44,6 @@ export default {
             fechaFin: new Date(data.fechaFin).toDateString()
           })
           })
-        console.log(this.tableData);
       })
       .catch(e => {
           console.log(e);

@@ -2,13 +2,13 @@
   <div class="wrapper">
     <side-bar>
       <template slot="links">
-        <sidebar-link to="/dashboard" name="Create activity" icon="ti-panel"/>
-        <sidebar-link to="/stats" name="Edit Profile" icon="ti-user"/>
-        <sidebar-link to="/table-list" name="Report" icon="ti-view-list-alt"/>
-         <sidebar-link to="/crear-curso" name="Create Course" icon="ti-write"/>
-        <!--<sidebar-link to="/icons" name="Icons" icon="ti-pencil-alt2"/>
-        <sidebar-link to="/maps" name="Map" icon="ti-map"/> -->
-        <sidebar-link to="/crear-semestre" name="Create Semestre" icon="ti-pencil-alt"/>
+        <sidebar-link to="/dashboard" name="Agregar Vehiculo" icon="ti-panel"/>
+        <sidebar-link to="/stats" name="Agregar Usuario" icon="ti-user"/>
+        <!-- <sidebar-link to="/table-list" name="Report" icon="ti-view-list-alt"/> -->
+         <sidebar-link to="/crear-curso" name="Ruta" icon="ti-write"/>
+        <!--<sidebar-link to="/icons" name="Icons" icon="ti-pencil-alt2"/> -->
+        <sidebar-link to="/location" name="Localización" icon="ti-map"/> 
+        <!-- <sidebar-link to="/crear-semestre" name="Create Semestre" icon="ti-pencil-alt"/> -->
         <!-- <sidebar-link to="/login" name="Login" icon="ti-write"/> -->
       </template>
       <mobile-menu>

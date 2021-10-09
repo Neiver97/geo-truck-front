@@ -46,10 +46,10 @@
             </ValidationProvider>
           </div>
         <div class="col-md">
-          <label for="">Cursos</label>
+          <!-- <label for="">Cursos</label>
           <div>
             <b-form-select v-model="dataSemestre.seleted" :options="cursos"></b-form-select>
-          </div>
+          </div> -->
         </div>
         </div>
         <input class="btn btn-primary mt-2" type="submit" text="Send" />
@@ -79,6 +79,9 @@ export default {
 
     };
   },
+  mounted(){
+    this.cleanData();
+  },
   methods: {
     async onSubmit(){
       await axios.post('http://localhost:8089/semestre/', this.dataSemestre).then(async(res) => {
@@ -89,9 +92,14 @@ export default {
             text: "Semestre creado con éxito",
             timer: 1500,
           });
-        this.cleanData();
-      }).catch(err => {
+        //this.cleanData();
+      }).catch((err) => {
         console.log(err.response);
+          Swal.fire({
+            icon: "Error",
+            title: "Error al crear semestre",
+            text: "Error al crear semestre",
+          });
       });   
     },
     cleanData(){

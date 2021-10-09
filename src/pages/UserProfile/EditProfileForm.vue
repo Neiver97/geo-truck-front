@@ -1,5 +1,5 @@
 <template>
-  <card class="card" title="Edit Profile">
+  <card class="card" title="Agregar Usuario">
     <div>
       <ValidationObserver v-slot="{ handleSubmit }">
       <form @submit.prevent="handleSubmit(updateProfile)">
@@ -87,43 +87,13 @@
         <div class="row">
           <div class="col-md-4">
             <ValidationProvider
-              name="Password"
+              name="Rol"
               rules="required"
               v-slot="{ errors }"
             >
               <div class="form-group">
-                <label>Password</label>
-                  <input class="form-control" :disabled="true" type="password" v-model="user.password" :class="(errors.length > 0 ? 'is-invalid':'')" />
-                  <div class="invalid-feedback">
-                    <span>{{ errors[0] }}</span>
-                  </div>              
-              </div>
-            </ValidationProvider>
-          </div>
-          <div class="col-md-4">
-            <ValidationProvider
-              name="Speciality"
-              rules="required"
-              v-slot="{ errors }"
-            >
-              <div class="form-group">
-                <label>Speciality</label>
-                  <input class="form-control" placeholder="Speciality" type="text" v-model="user.speciality" :class="(errors.length > 0 ? 'is-invalid':'')" />
-                  <div class="invalid-feedback">
-                    <span>{{ errors[0] }}</span>
-                  </div>              
-              </div>
-            </ValidationProvider>
-          </div>
-          <div class="col-md-4">
-            <ValidationProvider
-              name="Asigned Area"
-              rules="required"
-              v-slot="{ errors }"
-            >
-              <div class="form-group">
-                <label>Asigned Area</label>
-                  <input class="form-control" placeholder="Asigned Area" type="text" v-model="user.asignedArea" :class="(errors.length > 0 ? 'is-invalid':'')" />
+                <label>Rol</label>
+                  <input class="form-control" placeholder="Speciality" type="text" v-model="user.rol" :class="(errors.length > 0 ? 'is-invalid':'')" />
                   <div class="invalid-feedback">
                     <span>{{ errors[0] }}</span>
                   </div>              
@@ -131,7 +101,6 @@
             </ValidationProvider>
           </div>
         </div>
-
         <div class="text-center">
           <input class="btn btn-primary mt-2" type="submit" text="Send" />
         </div>
@@ -156,15 +125,16 @@ export default {
         lastName: "",
         gender: "",
         phone: "",
-        password: "",
-        speciality: "",
-        asignedArea: ""
+        rol:""
       }
     }
   },
   methods: {
     async onSubmit(){
-      await axios.post('http://localhost:8089/semestre/', this.user).then(async(res) => {
+
+      const URL = 'http://localhost:8080/v1/vehiculos';
+
+      await axios.post(URL, this.user).then(async(res) => {
         console.log(res);
           await Swal.fire({
             icon: "success",

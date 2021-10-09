@@ -12,6 +12,7 @@ import CrearCurso from "@/pages/CrearCurso.vue";
 import TableList from "@/pages/TableList.vue";
 import UserRegisterForm from '../pages/UserProfile/UserRegisterForm'
 import Login from '../pages/Login'
+import  Location  from "../pages/Location.vue";
 
 const routes = [
   {
@@ -31,18 +32,24 @@ const routes = [
     children: [
       {
         path: "dashboard",
-        name: "dashboard",
+        name: "Agregar Vehiculo",
         component: Dashboard
       },
       {
         path: "stats",
-        name: "stats",
+        name: "Registro usuario",
         component: UserProfile
       },
       {
         path: "crear-semestre",
         name: "crear-semestre",
         component: CrearSemestre
+      },
+      {
+        path: "location",
+        name: "localización",
+        component: Location
+
       },
       {
         path: "icons",
@@ -56,7 +63,7 @@ const routes = [
       },
       {
         path: "crear-curso",
-        name: "crear-curso",
+        name: "Ruta",
         component: CrearCurso
       },
       {
