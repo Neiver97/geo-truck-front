@@ -26,7 +26,7 @@ export default {
     async informacionRuta(){
         //let URL = "http://localhost:8080​/v1​/vehiculos​/geoloc​/1";
 
-        await axios.get("http://localhost:8080/v1/vehiculos/geoloc/1")
+        await axios.get("http://localhost:8080/v1/vehiculos/geoloc/2")
         .then(response => {
           this.data = response.data;
             console.log(this.data);   
